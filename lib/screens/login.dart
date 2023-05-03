@@ -1,6 +1,7 @@
+
 import 'package:flutter/material.dart';
-//import 'package:sampleui/screens/dashboard.dart';
 import '/screens/register.dart';
+import '/screens/dashboard.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -43,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
               Column(
                 children: [
                   SizedBox(
-                    height: 50,
+                    height: 60,
                   ),
                   Container(
                     child: Text('Welcome User!', style: TextStyle(fontSize: 30, fontWeight:FontWeight.bold
@@ -97,6 +98,9 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                     TextButton(onPressed: (){
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Please wait')),
+                      );
                       Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPage(),));
                     }, child: Text("Register Here", style: TextStyle(color: Colors.black))),
                     TextButton(onPressed: () {}, child: Text("Forgot Password?",style: TextStyle(color: Colors.black))),
@@ -111,9 +115,9 @@ class _LoginPageState extends State<LoginPage> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Processing Data')),
                             );
-                            /*Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(
-                              username: myController.text,
-                            ),),);*/
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfileDashboard(
+
+                            ),),);
                           }
 
                         },
